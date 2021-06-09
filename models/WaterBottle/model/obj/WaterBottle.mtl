@@ -1,0 +1,13 @@
+# Blender MTL File: 'untitled.blend'
+# Material Count: 1
+
+newmtl Material.004
+Ns 50.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.60000 0.60000 0.80000
+Ks 0.200000 0.200000 0.600000
+Ke 0.100000 0.100000 0.300000
+Ni 9.000000
+d 10.000000
+illum 2
+map_Kd ../materials/Diffuse_AO.png

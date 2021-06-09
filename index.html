@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Meal Scape Game</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="./libs/jquery.js"></script>
+    <script type="module" src="MyScene.js"></script>    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">     <style>
+        body{
+            margin: 0;
+            overflow: hidden; 
+        }
+
+        #puntuacion {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            font-size:50px;
+            z-index: 2;
+            display:block;
+            color:darkviolet;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            -webkit-text-stroke: 1px orange;
+            }
+            
+        #aumentoPuntuacion {
+            position: absolute;
+            top: 60px;
+            width: 100%;
+            text-align: center;
+            font-size:xx-large;
+            z-index: 2;
+            visibility: hidden;
+            color:yellow;
+            font-size: 6em;
+            text-shadow: 0px 10px 20px black;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            -webkit-text-stroke: 1px rgb(255, 255, 255);
+            }
+            
+        #aumentoVidas {
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            left: 3%;
+            font-size:xx-large;
+            z-index: 2;
+            visibility: hidden;
+            color:orange;
+            font-size: 6em;
+            text-shadow: 0px 10px 20px black;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            -webkit-text-stroke: 1px orangered;
+            }
+
+        #vidas {
+        position: absolute;
+        top: 10px;
+        width: 30%;
+        z-index: 3;
+        display:none;
+        margin-left: 3%;
+        }
+
+        img{
+            width: 55px;
+            height: 55px;
+            margin: 1%;
+        }
+        #final {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+            display:none;
+            font-size: x-large;
+            color:white;
+            background-color: red;
+            font-family: 'ZCOOL KuaiLe', cursive;       
+             }
+
+        #inicio {
+            position: absolute;
+            top: 60%;
+            width: 100%;
+            text-align: center;
+            font-size: x-large;
+            z-index: 2;
+            color:red;
+            font-family: 'ZCOOL KuaiLe', cursive;     
+            background-color: chartreuse;
+            filter: opacity(70%);  
+        }
+
+        #comienzo {
+            position: absolute;
+            top: 60%;
+            width: 100%;
+            text-align: center;
+            font-size: x-large;
+            z-index: 2;
+            color:red;
+            font-family: 'ZCOOL KuaiLe', cursive; 
+            display: none;      
+            background-color: chartreuse;
+            filter: opacity(70%);
+        }
+
+        #titulo {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            top: 0%;
+            text-align: center;
+            font-size: 60px;
+            z-index: 2;
+            color:orangered;
+            font-family: 'ZCOOL KuaiLe', cursive;     
+            -webkit-text-stroke: 1px black;
+            text-shadow: 0px 0px 10px greenyellow;  
+        }
+
+        #textoAyuda {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            top: 0%;
+            text-align: center;
+            font-size: xx-large;
+            z-index: 3;
+            color:white;
+            font-family: 'ZCOOL KuaiLe', cursive;       
+            -webkit-text-stroke: 0.7px greenyellow;
+        }
+
+        #titulo p{
+            margin: 1% 0% 0% 0%;
+        }
+
+        #titulo img{
+            align-self: center;
+            width: 20%;
+            height: 20%;
+        }
+
+        #imagenFondo{
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            position: absolute;
+            display: block;
+            left: -1%;
+            top: -2%;
+        }
+
+
+        #ayuda {
+            position: absolute;
+            top: 25%;
+            right: 5%;
+            width: 30%;
+            text-align: center;
+            font-size: x-large;
+            z-index: 3;
+            color: red;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            background-color: chartreuse;
+            filter: opacity(90%);
+            display: none;
+        }
+
+        #dificultad {
+            position: absolute;
+            display: none;
+            right: 5%;
+            flex-direction: column;
+            width: max-content;
+            top: 5%;
+            text-align: center;
+            font-size: 35px;
+            z-index: 3;
+            color: orangered;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            -webkit-text-stroke: 0.7px greenyellow;
+     
+        }
+
+        #pausa {
+            position: absolute;
+            top: 30%;
+            right: 38%;
+            width: 25%;
+            text-align: center;
+            font-size: x-large;
+            z-index: 2;
+            color: red;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            background-color: floralwhite;
+            filter: opacity(90%);
+            display: none;
+            
+        }
+    </style>
+</head>
+<body>
+
+<!-- Div which will hold the Output -->
+<div style="display: none;" id="WebGL-output">
+</div>
+<div id="pausa">
+    <h1>Pausa</h1>
+    <p>Reanudar (Esc)</p>
+    <p>Ayuda (H)</p>
+    <p>Reiniciar (Espacio)</p>
+    <p>Volver al inicio (Enter)</p>
+</div>
+<div id="textoAyuda">
+    <p>Ayuda (H)</p>
+</div>
+<div id="ayuda">
+    <p>Meal Scape es un corredor infinito en el que tienes que saltear los obstaculos</p>
+    <p>Utiliza WAD o ←↑→ para mover al personaje entre las 3 vías</p>
+    <p>Coge los refrescos para ganar vida o patatas para ganar puntos y evita las bombillas o perderas la vision</p>
+</div>
+<div id="vidas">
+    <img id="vida1" src="textures/life.png">
+    <img id="vida2" src="textures/life.png">
+    <img id="vida3" src="textures/life.png">
+</div>
+<img id="imagenFondo" src="textures/pantallaInicio.gif" alt="Meal Scape">
+<div id="titulo"><p>Meal Scape</p><img src="textures/burgerrun.png" alt="Logo Meal Scape"></div>
+<div id="inicio"><p>Elige la dificultad: </p><p>Principiante (1) - Moderado (2) - Dificil (3)</p></div>
+<div id="comienzo"><p>Pulsa <emp>espacio</emp> para comenzar la partida</p><p>Pulsa <emp>escape</emp> para volver a elegir dificultad</p></div>
+<div id="puntuacion"></div>
+<div id="dificultad">Dificultad: </div>
+<div id="aumentoPuntuacion">+10</div>
+<div id="aumentoVidas">+1 Vida</div>
+<div id="final"></div>
+</body>
+</html>
